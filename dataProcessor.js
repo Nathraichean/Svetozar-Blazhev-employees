@@ -84,7 +84,7 @@ function calculateCoworkingPeriods(projectsData) {
           if (calculateEmployeeProjectOverlap(projectsData[projectId][i], projectsData[projectId][j]) != false) {
 
             // Adds the days they've worked on the project to the total current amount.
-            coworkersSharedWorkData.totalDaysWorkedTogether += calculateEmployeeProjectOverlap(projectsData[projectId][i], projectsData[projectId][j]);
+            coworkersSharedWorkData.totalDaysWorkedTogether = coworkingData[coworkersIdentifier].totalDaysWorkedTogether + calculateEmployeeProjectOverlap(projectsData[projectId][i], projectsData[projectId][j]);
 
             // Checks if the project they've worked on is already added to 'coworkingData', if it isnt, adds it.
             if (!coworkingData[coworkersIdentifier].projectsWorkedOn.includes(projectId)) {
