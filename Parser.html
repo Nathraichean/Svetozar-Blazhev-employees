@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/x-icon" href="sirma.png">
+  <title>Sirma Task</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <script src="luxon.js"></script>
+  <script src="./dataProcessor.js"></script>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body
+  background="https://images.unsplash.com/photo-1566041510394-cf7c8fe21800?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80">
+
+  <div class="box">
+    <h3>This is my solution to the task given out for a Sirma Solutions internship position.</h3>
+    <p>Created by Svetozar Blazhev</p>
+    <form id="myForm">
+      <input type="file" id="csvFile" accept=".csv" />
+      <input type="submit" value="Submit" />
+    </form>
+  </div>
+
+  <script>
+    const myForm = document.getElementById("myForm");
+    const csvFile = document.getElementById("csvFile");
+
+    myForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const input = csvFile.files[0];
+      const reader = new FileReader();
+
+      reader.onload = function (e) {
+        const text = e.target.result;
+        const data = d3.csvParse(text);
+        processData(data);
+      };
+
+      reader.readAsText(input);
+    });
+  </script>
+
+  <div class="box" id="result" hidden="true">
+    <h4>The employees who worked together the most are:</h4>
+  </div>
+  <div class="box" id="no-result" hidden="true">
+    <h4>There weren't any coworkers from the provided data that worked on one project simultaneously for any period of time.</h4>
+  </div>
+  <div class="box" id="errors" hidden="true">
+    <h4>Data entries that did not get parsed. Reasons include : EmployeeID/ProjectID are not number types or date formats provided are not supported/incorrect.</h4>
+  </div>
+</body>
+
+</html>
