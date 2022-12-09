@@ -12,7 +12,7 @@ The application processes the following:
 5. Is able to handle multiple date formats and automatically takes the current date if "DateTo" is either incorrect or in the future.
 
 Note :
-More date formats can be manually added as needed in the validateAndTransformDate function (dataProcessor.js, line 154). 
+More date formats can be manually added as needed in the validateAndTransformDate function (dataProcessor.js, line 157). 
 Default formats are added, but can be extended depending on the need.
 
 How to run :
