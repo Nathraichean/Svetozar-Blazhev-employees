@@ -2,6 +2,9 @@ function processData(excelData) {
 
   const projectData = organizeDataToProjects(excelData);
   const coworkersData = calculateCoworkingPeriods(projectData);
+  
+  console.log(projectData);
+  console.log(coworkersData);
 
   let maxWorkedHoursTogether = -1;
   let counter = 0;
